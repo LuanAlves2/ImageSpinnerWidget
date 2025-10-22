@@ -1,0 +1,78 @@
+{
+  "id": "com.sap.custom.ImageSpinnerWidget",
+  "name": "Image Spinner Widget",
+  "description": "A custom widget that displays a rotating image as a loading spinner",
+  "version": "1.0.0",
+  "newInstancePrefix": "ImageSpinner",
+  "icon": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzAiIHN0cm9rZT0iIzAwN0JGRiIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtZGFzaGFycmF5PSIxOCAxOCIgZmlsbD0ibm9uZSI+CjxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0icm90YXRlIiBkdXI9IjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgdmFsdWVzPSIwIDMyIDMyOzM2MCAzMiAzMiIvPgo8L2NpcmNsZT4KPC9zdmc+",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "com-sap-custom-image-spinner-widget",
+      "url": "https://raw.githubusercontent.com/your-repo/ImageSpinnerWidget/main/ImageSpinnerWidget.js",
+      "integrity": "sha384-example-hash-here"
+    },
+    {
+      "kind": "builder",
+      "tag": "com-sap-custom-image-spinner-widget-builder",
+      "url": "https://raw.githubusercontent.com/your-repo/ImageSpinnerWidget/main/ImageSpinnerWidget_Builder.js",
+      "integrity": "sha384-example-hash-here"
+    }
+  ],
+  "properties": {
+    "imageUrl": {
+      "type": "string",
+      "description": "URL of the image to display as spinner"
+    },
+    "spinnerSize": {
+      "type": "number",
+      "description": "Size of the spinner in pixels"
+    },
+    "rotationSpeed": {
+      "type": "number",
+      "description": "Speed of rotation in seconds"
+    },
+    "showText": {
+      "type": "boolean",
+      "description": "Whether to show loading text"
+    },
+    "loadingText": {
+      "type": "string",
+      "description": "Text to display during loading"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "description": "Background color of the overlay"
+    },
+    "loadingDuration": {
+      "type": "number",
+      "description": "How long to show the loading spinner in milliseconds"
+    }
+  },
+  "events": {
+    "loadingComplete": {
+      "description": "Fired when loading is complete"
+    },
+    "loadingStart": {
+      "description": "Fired when loading starts"
+    }
+  },
+  "methods": {
+    "startLoading": {
+      "description": "Start the loading spinner"
+    },
+    "stopLoading": {
+      "description": "Stop the loading spinner"
+    },
+    "setLoadingDuration": {
+      "description": "Set the loading duration in milliseconds",
+      "parameters": [
+        {
+          "name": "duration",
+          "type": "number",
+          "description": "Duration in milliseconds"
+        }
+      ]
+    }
+  }
+}

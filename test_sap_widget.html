@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - SAP Image Spinner Widget</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        .header p {
+            color: #6c757d;
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
+        }
+        
+        .test-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .controls-panel {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .widget-panel {
+            background: #fff;
+            border: 2px dashed #007bff;
+            border-radius: 8px;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #0056b3, #004085);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(45deg, #6c757d, #545b62);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(45deg, #545b62, #495057);
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: linear-gradient(45deg, #28a745, #1e7e34);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: linear-gradient(45deg, #1e7e34, #155724);
+            transform: translateY(-2px);
+        }
+        
+        .widget-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #6c757d;
+        }
+        
+        .widget-placeholder .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .log-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .log-content {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+        
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 2px 0;
+        }
+        
+        .log-timestamp {
+            color: #68d391;
+        }
+        
+        .log-info {
+            color: #63b3ed;
+        }
+        
+        .log-success {
+            color: #68d391;
+        }
+        
+        .log-error {
+            color: #fc8181;
+        }
+        
+        .help-text {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-loading {
+            background: #ffc107;
+            animation: pulse 1s infinite;
+        }
+        
+        .status-ready {
+            background: #28a745;
+        }
+        
+        .status-error {
+            background: #dc3545;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .sap-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #0070f3, #00d4ff);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 SAP Image Spinner Widget</h1>
+            <p>Teste do Custom Widget seguindo padrão oficial SAP-Custom-Widget <span class="sap-badge">SAP</span></p>
+        </div>
+        
+        <div class="test-section">
+            <div class="controls-panel">
+                <h3>⚙️ Configurações do Widget</h3>
+                
+                <form id="configForm">
+                    <div class="form-group">
+                        <label for="imageUrl">URL da Imagem:</label>
+                        <input type="text" id="imageUrl" value="./Alex.jpeg" placeholder="https://example.com/image.jpg">
+                        <div class="help-text">URL da imagem para exibir no spinner</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="spinnerSize">Tamanho do Spinner (px):</label>
+                        <input type="number" id="spinnerSize" value="80" min="20" max="300">
+                        <div class="help-text">Tamanho em pixels (20-300)</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rotationSpeed">Velocidade de Rotação (s):</label>
+                        <input type="number" id="rotationSpeed" value="2" min="0.5" max="10" step="0.1">
+                        <div class="help-text">Velocidade em segundos (0.5-10)</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="showText" checked>
+                            <label for="showText">Mostrar Texto de Loading</label>
+                        </div>
+                        <div class="help-text">Exibir texto abaixo do spinner</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loadingText">Texto de Loading:</label>
+                        <input type="text" id="loadingText" value="Carregando...">
+                        <div class="help-text">Texto exibido durante o loading</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="backgroundColor">Cor de Fundo:</label>
+                        <input type="text" id="backgroundColor" value="rgba(255, 255, 255, 0.9)">
+                        <div class="help-text">Cor de fundo do overlay (valor CSS)</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loadingDuration">Duração do Loading (ms):</label>
+                        <input type="number" id="loadingDuration" value="3000" min="500" max="30000" step="100">
+                        <div class="help-text">Duração em milissegundos (500-30000)</div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="button" class="btn btn-primary" onclick="showWidget()">
+                            🔄 Mostrar Widget
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="hideWidget()">
+                            ❌ Esconder Widget
+                        </button>
+                        <button type="button" class="btn btn-success" onclick="testCustomDuration()">
+                            ⏱️ Teste 5s
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="widget-panel" id="widgetPanel">
+                <div class="widget-placeholder" id="widgetPlaceholder">
+                    <div class="icon">🔄</div>
+                    <div>Clique em "Mostrar Widget" para testar</div>
+                    <div style="font-size: 0.9em; margin-top: 10px; color: #adb5bd;">
+                        Widget SAP Custom seguindo padrão oficial
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="log-section">
+            <h3>📝 Log de Eventos</h3>
+            <div class="log-content" id="logContent">
+                <div class="log-entry">
+                    <span class="log-timestamp">[00:00:00]</span>
+                    <span class="log-info">Sistema inicializado. Pronto para testar o widget SAP!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluir o widget SAP -->
+    <script src="./ImageSpinnerWidget.js"></script>
+    
+    <script>
+        let currentWidget = null;
+        let widgetStatus = 'ready';
+        
+        function logEvent(message, type = 'info') {
+            const logContent = document.getElementById('logContent');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            logEntry.innerHTML = `
+                <span class="log-timestamp">[${timestamp}]</span>
+                <span class="log-${type}">${message}</span>
+            `;
+            logContent.appendChild(logEntry);
+            logContent.scrollTop = logContent.scrollHeight;
+        }
+        
+        function updateStatus(status) {
+            widgetStatus = status;
+            const statusIndicator = document.querySelector('.status-indicator');
+            if (statusIndicator) {
+                statusIndicator.className = `status-indicator status-${status}`;
+            }
+        }
+        
+        function showWidget() {
+            // Remover widget anterior se existir
+            hideWidget();
+            
+            // Obter valores dos controles
+            const config = {
+                imageUrl: document.getElementById('imageUrl').value,
+                spinnerSize: document.getElementById('spinnerSize').value,
+                rotationSpeed: document.getElementById('rotationSpeed').value,
+                showText: document.getElementById('showText').checked,
+                loadingText: document.getElementById('loadingText').value,
+                backgroundColor: document.getElementById('backgroundColor').value,
+                loadingDuration: document.getElementById('loadingDuration').value
+            };
+            
+            // Validar configuração
+            if (!config.imageUrl.trim()) {
+                logEvent('❌ Erro: URL da imagem é obrigatória!', 'error');
+                return;
+            }
+            
+            // Criar novo widget
+            currentWidget = document.createElement('com-sap-custom-image-spinner-widget');
+            
+            // Aplicar configurações
+            Object.keys(config).forEach(key => {
+                const attrName = key.toLowerCase();
+                currentWidget.setAttribute(attrName, config[key].toString());
+            });
+            
+            // Adicionar listeners para eventos
+            currentWidget.addEventListener('loadingStart', (event) => {
+                logEvent(`🚀 Loading iniciado! Duração: ${event.detail.duration}ms`, 'info');
+                updateStatus('loading');
+            });
+            
+            currentWidget.addEventListener('loadingComplete', (event) => {
+                logEvent(`✅ Loading concluído! Timestamp: ${event.detail.timestamp}`, 'success');
+                updateStatus('ready');
+            });
+            
+            // Adicionar ao painel
+            const panel = document.getElementById('widgetPanel');
+            const placeholder = document.getElementById('widgetPlaceholder');
+            
+            panel.innerHTML = '';
+            panel.appendChild(currentWidget);
+            
+            // Adicionar indicador de status
+            const statusDiv = document.createElement('div');
+            statusDiv.style.cssText = 'position: absolute; top: 10px; right: 10px; display: flex; align-items: center; font-size: 12px; color: #6c757d;';
+            statusDiv.innerHTML = '<span class="status-indicator status-loading"></span>Widget Ativo';
+            panel.appendChild(statusDiv);
+            
+            logEvent(`🎯 Widget SAP criado com imagem: ${config.imageUrl}`, 'info');
+            logEvent(`⚙️ Configurações: Tamanho=${config.spinnerSize}px, Velocidade=${config.rotationSpeed}s, Duração=${config.loadingDuration}ms`, 'info');
+        }
+        
+        function hideWidget() {
+            if (currentWidget) {
+                currentWidget.stopLoading();
+                currentWidget = null;
+                updateStatus('ready');
+                
+                // Restaurar placeholder
+                const panel = document.getElementById('widgetPanel');
+                panel.innerHTML = `
+                    <div class="widget-placeholder" id="widgetPlaceholder">
+                        <div class="icon">🔄</div>
+                        <div>Clique em "Mostrar Widget" para testar</div>
+                        <div style="font-size: 0.9em; margin-top: 10px; color: #adb5bd;">
+                            Widget SAP Custom seguindo padrão oficial
+                        </div>
+                    </div>
+                `;
+                
+                logEvent('❌ Widget removido', 'info');
+            }
+        }
+        
+        function testCustomDuration() {
+            showWidget();
+            if (currentWidget) {
+                currentWidget.setLoadingDuration(5000); // 5 segundos
+                logEvent('⏱️ Teste com duração customizada: 5 segundos', 'info');
+            }
+        }
+        
+        // Log inicial
+        logEvent('🎯 Página carregada. Sistema pronto para testar o widget SAP!', 'info');
+        logEvent('📋 Widget segue padrão oficial SAP-Custom-Widget com IIFE e estrutura modular', 'info');
+    </script>
+</body>
+</html>
