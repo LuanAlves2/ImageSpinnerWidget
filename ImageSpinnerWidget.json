@@ -4,19 +4,21 @@
   "description": "A custom widget that displays a rotating image as a loading spinner",
   "version": "1.0.0",
   "newInstancePrefix": "ImageSpinner",
+  "vendor": "Luan Alves",
+  "eula": "Luan Alves",
   "icon": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzAiIHN0cm9rZT0iIzAwN0JGRiIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtZGFzaGFycmF5PSIxOCAxOCIgZmlsbD0ibm9uZSI+CjxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0icm90YXRlIiBkdXI9IjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgdmFsdWVzPSIwIDMyIDMyOzM2MCAzMiAzMiIvPgo8L2NpcmNsZT4KPC9zdmc+",
   "webcomponents": [
     {
       "kind": "main",
       "tag": "com-sap-custom-image-spinner-widget",
       "url": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/ImageSpinnerWidget.js",
-      "integrity": ""
+      "integrity": "sha384-940B08C89D0704C41619D39080D8BED2C9AE905D9C36E22C814F2229B1E459AB55A"
     },
     {
       "kind": "builder",
       "tag": "com-sap-custom-image-spinner-widget-builder",
       "url": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/ImageSpinnerWidget_Builder.js",
-      "integrity": ""
+      "integrity": "sha384-E5C1D18DBBA2E836BB9158B99D50956640930C36EE6B7B8DD3937ED4C0D8655282C"
     }
   ],
   "properties": {
