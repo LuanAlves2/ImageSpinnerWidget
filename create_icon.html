@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Icon for ImageSpinnerWidget</title>
+</head>
+<body>
+    <canvas id="canvas" width="64" height="64" style="border: 1px solid #ccc;"></canvas>
+    <br>
+    <button onclick="downloadIcon()">Download Icon</button>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Background
+        ctx.fillStyle = '#f0f0f0';
+        ctx.fillRect(0, 0, 64, 64);
+        
+        // Draw spinning circle
+        const centerX = 32;
+        const centerY = 32;
+        const radius = 25;
+        
+        // Outer circle
+        ctx.strokeStyle = '#007bff';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.stroke();
+        
+        // Spinning arc
+        ctx.strokeStyle = '#007bff';
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 1.5);
+        ctx.stroke();
+        
+        // Center dot
+        ctx.fillStyle = '#007bff';
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, 4, 0, Math.PI * 2);
+        ctx.fill();
+        
+        function downloadIcon() {
+            const link = document.createElement('a');
+            link.download = 'icon.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>

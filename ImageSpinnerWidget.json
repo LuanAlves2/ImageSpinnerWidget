@@ -1,80 +1,130 @@
 {
-  "id": "com.sap.custom.ImageSpinnerWidget",
-  "name": "Image Spinner Widget",
-  "description": "A custom widget that displays a rotating image as a loading spinner",
-  "version": "1.0.0",
-  "newInstancePrefix": "ImageSpinner",
-  "vendor": "Luan Alves",
-  "eula": "Luan Alves",
-  "icon": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzAiIHN0cm9rZT0iIzAwN0JGRiIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtZGFzaGFycmF5PSIxOCAxOCIgZmlsbD0ibm9uZSI+CjxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0icm90YXRlIiBkdXI9IjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgdmFsdWVzPSIwIDMyIDMyOzM2MCAzMiAzMiIvPgo8L2NpcmNsZT4KPC9zdmc+",
-  "webcomponents": [
-    {
-      "kind": "main",
-      "tag": "com-sap-custom-image-spinner-widget",
-      "url": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/ImageSpinnerWidget.js",
-      "integrity": "sha384-940B08C89D0704C41619D39080D8BED2C9AE905D9C36E22C814F2229B1E459AB55A"
-    },
-    {
-      "kind": "builder",
-      "tag": "com-sap-custom-image-spinner-widget-builder",
-      "url": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/ImageSpinnerWidget_Builder.js",
-      "integrity": "sha384-E5C1D18DBBA2E836BB9158B99D50956640930C36EE6B7B8DD3937ED4C0D8655282C"
-    }
-  ],
-  "properties": {
-    "imageUrl": {
-      "type": "string",
-      "description": "URL of the image to display as spinner"
-    },
-    "spinnerSize": {
-      "type": "number",
-      "description": "Size of the spinner in pixels"
-    },
-    "rotationSpeed": {
-      "type": "number",
-      "description": "Speed of rotation in seconds"
-    },
-    "showText": {
-      "type": "boolean",
-      "description": "Whether to show loading text"
-    },
-    "loadingText": {
-      "type": "string",
-      "description": "Text to display during loading"
-    },
-    "backgroundColor": {
-      "type": "string",
-      "description": "Background color of the overlay"
-    },
-    "loadingDuration": {
-      "type": "number",
-      "description": "How long to show the loading spinner in milliseconds"
-    }
-  },
-  "events": {
-    "loadingComplete": {
-      "description": "Fired when loading is complete"
-    },
-    "loadingStart": {
-      "description": "Fired when loading starts"
-    }
-  },
-  "methods": {
-    "startLoading": {
-      "description": "Start the loading spinner"
-    },
-    "stopLoading": {
-      "description": "Stop the loading spinner"
-    },
-    "setLoadingDuration": {
-      "description": "Set the loading duration in milliseconds",
-      "parameters": [
+    "id": "com.luanarantes.sap.imagespinnerwidget",
+    "version": "1.0.0",
+    "name": "Image Spinner Widget",
+    "description": "A custom widget that displays a rotating image as a loading spinner in SAP Analytics Cloud",
+    "newInstancePrefix": "ImageSpinner",
+    "vendor": "Luan Arantes",
+    "eula": "",
+    "license": "MIT",
+    "icon": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/icon.png",
+    "webcomponents": [
         {
-          "name": "duration",
-          "type": "number",
-          "description": "Duration in milliseconds"
+            "kind": "main",
+            "tag": "com-luanarantes-sap-imagespinnerwidget",
+            "url": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/ImageSpinnerWidget.js",
+            "integrity": "sha384-43ED9952C74DE41B9C69A0D598830BFC391D0CEDFB67E119E5D312D9A361B703459",
+            "ignoreIntegrity": true
+        },
+        {
+            "kind": "builder",
+            "tag": "com-luanarantes-sap-imagespinnerwidget-builder",
+            "url": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/ImageSpinnerWidget_Builder.js",
+            "integrity": "sha384-5BE979F33AF9D63DA83588CF2FE18A1CE2763D713A1CD6990907769DB4475C40F97",
+            "ignoreIntegrity": true
         }
-      ]
+    ],
+    "properties": {
+        "imageUrl": {
+            "description": "Image URL for spinner",
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/Alex.jpeg"
+        },
+        "spinnerSize": {
+            "description": "Spinner Size in pixels",
+            "type": "integer",
+            "default": 80
+        },
+        "rotationSpeed": {
+            "description": "Rotation Speed in seconds",
+            "type": "number",
+            "default": 2
+        },
+        "showText": {
+            "description": "Show Loading Text",
+            "type": "boolean",
+            "default": true
+        },
+        "loadingText": {
+            "description": "Loading Text",
+            "type": "string",
+            "default": "Carregando..."
+        },
+        "backgroundColor": {
+            "description": "Background Color",
+            "type": "string",
+            "default": "rgba(255, 255, 255, 0.9)"
+        },
+        "loadingDuration": {
+            "description": "Loading Duration in milliseconds",
+            "type": "integer",
+            "default": 3000
+        }
+    },
+    "methods": {
+        "setImageUrl": {
+            "description": "Set Image URL",
+            "parameters": [
+                {
+                    "name": "imageUrl",
+                    "type": "string",
+                    "description": "Image URL"
+                }
+            ],
+            "body": "this.imageUrl = imageUrl;"
+        },
+        "getImageUrl": {
+            "returnType": "string",
+            "description": "Return Image URL",
+            "body": "return this.imageUrl;"
+        },
+        "setSpinnerSize": {
+            "description": "Set Spinner Size",
+            "parameters": [
+                {
+                    "name": "spinnerSize",
+                    "type": "integer",
+                    "description": "Spinner Size in pixels"
+                }
+            ],
+            "body": "this.spinnerSize = spinnerSize;"
+        },
+        "getSpinnerSize": {
+            "returnType": "integer",
+            "description": "Return Spinner Size",
+            "body": "return this.spinnerSize;"
+        },
+        "setRotationSpeed": {
+            "description": "Set Rotation Speed",
+            "parameters": [
+                {
+                    "name": "rotationSpeed",
+                    "type": "number",
+                    "description": "Rotation Speed in seconds"
+                }
+            ],
+            "body": "this.rotationSpeed = rotationSpeed;"
+        },
+        "getRotationSpeed": {
+            "returnType": "number",
+            "description": "Return Rotation Speed",
+            "body": "return this.rotationSpeed;"
+        },
+        "startLoading": {
+            "description": "Start Loading Spinner",
+            "body": "this.startLoading();"
+        },
+        "stopLoading": {
+            "description": "Stop Loading Spinner",
+            "body": "this.stopLoading();"
+        }
+    },
+    "events": {
+        "loadingStart": {
+            "description": "Loading started"
+        },
+        "loadingComplete": {
+            "description": "Loading completed"
+        }
     }
-  }
 }
