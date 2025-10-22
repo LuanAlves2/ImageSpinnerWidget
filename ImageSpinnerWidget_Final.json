@@ -1,0 +1,97 @@
+{
+    "id": "com.rohitchouhan.sap.imagespinnerwidget",
+    "version": "1.0.0",
+    "name": "Image Spinner Widget",
+    "description": "The Image Spinner Widget is a custom widget that displays a rotating image as a loading spinner in your SAP application.",
+    "newInstancePrefix": "ImageSpinner",
+    "vendor": "Luan Arantes",
+    "eula": "",
+    "license": "MIT",
+    "icon": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/icon.png",
+    "webcomponents": [
+        {
+            "kind": "main",
+            "tag": "com-rohitchouhan-sap-imagespinnerwidget",
+            "url": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/ImageSpinnerWidget_Final.js",
+            "integrity": "sha384-C8A1600CEF71C506910A7171AC695896F844F05572BE1B2BA5BB9A63E4ECD9149C1",
+            "ignoreIntegrity": true
+        }
+    ],
+    "properties": {
+        "src": {
+            "description": "Image URL",
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/Alex.jpeg"
+        },
+        "width": {
+            "description": "Image Width",
+            "type": "integer",
+            "default": 80
+        },
+        "height": {
+            "description": "Image Height",
+            "type": "integer",
+            "default": 80
+        },
+        "rotationSpeed": {
+            "description": "Rotation Speed in seconds",
+            "type": "number",
+            "default": 2
+        }
+    },
+    "methods": {
+        "setSrc": {
+            "description": "Set Image URL",
+            "parameters": [
+                {
+                    "name": "src",
+                    "type": "string",
+                    "description": "Image URL"
+                }
+            ],
+            "body": "this.src = src;"
+        },
+        "getSrc": {
+            "returnType": "string",
+            "description": "Return Image URL",
+            "body": "return this.src;"
+        },
+        "setWidth": {
+            "description": "Set Image Width",
+            "parameters": [
+                {
+                    "name": "width",
+                    "type": "integer",
+                    "description": "Image Width"
+                }
+            ],
+            "body": "this.width = width;"
+        },
+        "getWidth": {
+            "returnType": "integer",
+            "description": "Return Image Width",
+            "body": "return this.width;"
+        },
+        "setHeight": {
+            "description": "Set Image Height",
+            "parameters": [
+                {
+                    "name": "height",
+                    "type": "integer",
+                    "description": "Image Height"
+                }
+            ],
+            "body": "this.height = height;"
+        },
+        "getHeight": {
+            "returnType": "integer",
+            "description": "Return Image Height",
+            "body": "return this.height;"
+        }
+    },
+    "events": {
+        "onClick": {
+            "description": "User Clicked."
+        }
+    }
+}
