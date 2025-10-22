@@ -1,0 +1,60 @@
+{
+    "id": "com.luanarantes.sap.imagespinnerwidget",
+    "version": "1.0.0",
+    "name": "Image Spinner Widget",
+    "description": "A simple custom widget that displays a rotating image as a loading spinner",
+    "newInstancePrefix": "ImageSpinner",
+    "vendor": "Luan Arantes",
+    "eula": "",
+    "license": "MIT",
+    "icon": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/icon.png",
+    "webcomponents": [
+        {
+            "kind": "main",
+            "tag": "com-luanarantes-sap-imagespinnerwidget",
+            "url": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/ImageSpinnerWidget_UltraSimple.js",
+            "integrity": "sha384-E763D5F00E90E89682F9DBE39DB2DC17696FCE09B78186EBC48F31ABCA6C9E57E2A",
+            "ignoreIntegrity": true
+        }
+    ],
+    "properties": {
+        "imageUrl": {
+            "description": "Image URL for spinner",
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/Alex.jpeg"
+        },
+        "spinnerSize": {
+            "description": "Spinner Size in pixels",
+            "type": "integer",
+            "default": 80
+        },
+        "rotationSpeed": {
+            "description": "Rotation Speed in seconds",
+            "type": "number",
+            "default": 2
+        }
+    },
+    "methods": {
+        "setImageUrl": {
+            "description": "Set Image URL",
+            "parameters": [
+                {
+                    "name": "imageUrl",
+                    "type": "string",
+                    "description": "Image URL"
+                }
+            ],
+            "body": "this.imageUrl = imageUrl;"
+        },
+        "getImageUrl": {
+            "returnType": "string",
+            "description": "Return Image URL",
+            "body": "return this.imageUrl;"
+        }
+    },
+    "events": {
+        "onClick": {
+            "description": "User Clicked."
+        }
+    }
+}
