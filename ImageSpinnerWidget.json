@@ -9,14 +9,14 @@
     {
       "kind": "main",
       "tag": "com-sap-custom-image-spinner-widget",
-      "url": "https://raw.githubusercontent.com/your-repo/ImageSpinnerWidget/main/ImageSpinnerWidget.js",
-      "integrity": "sha384-example-hash-here"
+      "url": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/ImageSpinnerWidget.js",
+      "integrity": ""
     },
     {
       "kind": "builder",
       "tag": "com-sap-custom-image-spinner-widget-builder",
-      "url": "https://raw.githubusercontent.com/your-repo/ImageSpinnerWidget/main/ImageSpinnerWidget_Builder.js",
-      "integrity": "sha384-example-hash-here"
+      "url": "https://raw.githubusercontent.com/LuanAlves2/ImageSpinnerWidget/main/ImageSpinnerWidget_Builder.js",
+      "integrity": ""
     }
   ],
   "properties": {
